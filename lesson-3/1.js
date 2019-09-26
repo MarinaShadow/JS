@@ -14,12 +14,12 @@
 function upperCaseFirst(string) {
     if (typeof string === 'string'){
        let newString = string.charAt(0).toUpperCase() + string.slice(1);
-       console.log(newString);
+       return newString;
     }
 }
 
-upperCaseFirst('pitter'); // Pitter
-upperCaseFirst(''); // ''
+console.log(upperCaseFirst('pitter')); // Pitter
+console.log(upperCaseFirst('')); // ''
 
 
 exports.upperCaseFirst = upperCaseFirst;
