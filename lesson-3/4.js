@@ -18,14 +18,14 @@ const PRICE = '$120';
 function extractCurrencyValue(source) {
     if (typeof source === 'string') {
         let onlyPrice = +source.slice(1);
-        console.log(onlyPrice);
+        return onlyPrice;
         // console.log(typeof onlyPrice); //проверка для себя
     } else {
-        console.log(null);
+        return null;
     }
 }
 
-extractCurrencyValue(PRICE); // 120
-// extractCurrencyValue(25); //проверка для себя
+console.log(extractCurrencyValue(PRICE)); // 120
+// console.log(extractCurrencyValue(25)); //проверка для себя
 
 exports.extractCurrencyValue = extractCurrencyValue;
