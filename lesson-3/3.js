@@ -19,16 +19,16 @@ function truncate(string, maxLength) {
     if (typeof string === 'string' && typeof maxLength === 'number'){
         if (string.length > maxLength) {
             let myString = string.slice(0, maxLength-3) + '...';
-            console.log(myString);
+            return myString;
             // console.log(myString.length); //проверка для себя
         } else {
-            console.log(string);
+            return string;
             // console.log(string.length); //проверка для себя
         }
     }
 }
 
-truncate('Вот, что мне хотелось бы сказать на эту тему:', 21); // 'Вот, что мне хотел...'
-// truncate('Вот, что мне хотел', 21); //проверка для себя
+console.log(truncate('Вот, что мне хотелось бы сказать на эту тему:', 21)); // 'Вот, что мне хотел...'
+// console.log(truncate('Вот, что мне хотел', 21)); //проверка для себя
 
 exports.truncate = truncate;
