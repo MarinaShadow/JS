@@ -24,7 +24,7 @@ const person = {};
 
 Object.defineProperties(person, {
     rate: {
-        // value: 0,
+        // value: null,
         writable: true,
     },
     salary: {
@@ -48,6 +48,6 @@ person.rate = 30;
 console.log(person.rate);
 console.log(person.salary);
 
-for(let key in person) console.log(key); // Проверка для себя
+//for(let key in person) console.log(key); // Проверка для себя
 
 exports.person = person;
