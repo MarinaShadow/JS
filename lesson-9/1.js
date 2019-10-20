@@ -17,13 +17,20 @@
 // Решение
 
 function shallowMerge(target, source) {
-    let names = Object.getOwnPropertyNames(source);
+    let all = {};
+    let names1 = Object.getOwnPropertyNames(target);
+    let names2 = Object.getOwnPropertyNames(source);
 
-    for (let i = 0; i <  names.length; ++i) {
-        let desc = Object.getOwnPropertyDescriptor(source, names[i]);
-        Object.defineProperty(target, names[i], desc);
+    for (let i = 0; i <  names1.length; ++i) {
+        let desc1 = Object.getOwnPropertyDescriptor(target, names1[i]);
+        Object.defineProperty(all, names1[i], desc1);
     }
-    return target;
+
+    for (let i = 0; i <  names2.length; ++i) {
+        let desc2 = Object.getOwnPropertyDescriptor(source, names2[i]);
+        Object.defineProperty(all, names2[i], desc2);
+    }
+    return all;
 }
 
 const user = { firstName: 'Marcus', lastName: 'Kronenberg' };
@@ -33,6 +40,7 @@ Object.defineProperty(user, 'firstName', { writable: false });
 Object.defineProperty(userData, 'job', { configurable: false });
 
 const result = shallowMerge(user, userData);
+
 
 console.log(result); // { firstName: 'Marcus', lastName: 'Schmidt', job: 'developer', country: 'Germany' }
 console.log(Object.getOwnPropertyDescriptor(result, 'firstName').writable); // false
