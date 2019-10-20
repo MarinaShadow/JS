@@ -26,7 +26,6 @@ function shallowMerge(target, source) {
     return target;
 }
 
-
 const user = { firstName: 'Marcus', lastName: 'Kronenberg' };
 const userData = { job: 'developer', country: 'Germany', lastName: 'Schmidt' };
 
