@@ -15,7 +15,7 @@
 
 function createFibonacciGenerator() {
     let arr = [0, 1];
-    let obj = { // или тут же return {}
+    let obj = {  // или тут же return {}
         print() {
             let num = arr[arr.length - 1];
             arr.push(arr[arr.length - 1] + arr[arr.length - 2]);

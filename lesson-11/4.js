@@ -37,7 +37,7 @@ function validateF(paramF) {
 function createLogger(){
     let arr = [];
 
-    let obj = { // или тут же return {}
+    let obj = {  // или тут же return {}
         call(fun, ...res) {
             validateF(fun);
 
