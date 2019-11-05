@@ -20,26 +20,23 @@ function CleanerRobot(initialEnergy = 0 /* Изначальный заряд б�
     const MAX_ENERGY_CAPACITY = 100; /* Максимальная ёмкость батареи. */
     let energy = null;
 
-    if (initialEnergy) {
-        this.setEnergy(initialEnergy);
-    }
-
-    // this.setEnergy(initialEnergy);
+    this.setEnergy(initialEnergy);
 
     function getEnergy() {
-        // Решение
-
-        return energy = initialEnergy;
+		// Решение
+		
+        return energy;
     }
     function setEnergy(val) {
         // Решение
-
+        
         if (val < 0) {
             throw new Error('New energy level can not be less than 0');
         } else if (val > MAX_ENERGY_CAPACITY) {
             throw new Error('New energy level can not be more than 100');
         }
-        return initialEnergy = val;
+        
+        return energy = val;
     }
 }
 
