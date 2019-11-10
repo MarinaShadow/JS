@@ -27,6 +27,7 @@ Function.prototype.delay = function(ms) {
 function sayHello() {
     console.log('Hello!');
 }
+
 sayHello.delay(1000); /* Выведет "Hello!" через 1 секунду */
 
 
