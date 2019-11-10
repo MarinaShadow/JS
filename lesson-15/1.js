@@ -25,7 +25,7 @@ Function.prototype.delay = function(ms) {
 };
 
 function sayHello() {
-    console.log('Hello!');
+	console.log('Hello!');
 }
 
 sayHello.delay(1000); /* Выведет "Hello!" через 1 секунду */
@@ -36,10 +36,10 @@ Function.prototype.delay = function(ms) { // подойдет и для sayHello
 
 	let timerId = setTimeout(self, ms);
 
-    return function () {
+	return function () {
 		clearTimeout(timerId);
 		setTimeout(self, ms, ...arguments);
-    };
+	};
 };
 
 function sum(a, b) {
