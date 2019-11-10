@@ -23,7 +23,7 @@ function createFibonacciGenerator() {
             return num;
         },
         reset() {
-            arr = [0, 1]
+            arr = [0, 1];
         },
     };
 
