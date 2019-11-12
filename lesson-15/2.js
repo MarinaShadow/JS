@@ -19,29 +19,17 @@
  * - Решить задачу в стиле прототипного наследования JavaScript.
  */
 
-function Developer() {}
+function Developer() {
+    this.completedTasks = [];
+}
 
-Developer.prototype.completedTasks = []; // эту строку я бы удалила
+// Developer.prototype.completedTasks = [];
 Developer.prototype.completeTask = function(task) {
-	this.completedTasks.push(task);
+    this.completedTasks.push(task);
 };
 
-function Dev1(){
-	Developer.call(this);
-}
-
-Dev1.prototype = Object.create(Developer.prototype);
-Dev1.prototype.completedTasks = [];
-
-function Dev2(){
-	Developer.call(this);
-}
-
-Dev2.prototype = Object.create(Developer.prototype);
-Dev2.prototype.completedTasks = [];
-
-const developer1 = new Dev1();
-const developer2 = new Dev2();
+const developer1 = new Developer();
+const developer2 = new Developer();
 
 developer1.completeTask('finish a feature');
 developer1.completeTask('refactor code');
