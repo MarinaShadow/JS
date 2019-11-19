@@ -19,9 +19,8 @@ class DB {
     }
 
     create(obj) {
-
         if (typeof obj !== 'object') {
-            throw new Error('argument is not an obgect');
+            throw new Error('argument is not an object');
         } else if (typeof obj.name !== 'string') {
             throw new Error('name is required field with type string');
         } else if (typeof obj.age !== 'number') {
@@ -39,14 +38,15 @@ class DB {
 
         return id;
     }
-    read(id) {
 
+    read(id) {
         if (typeof id != 'string' || arguments.length === 0) {
             throw new Error('method read must accept a string');
         }
 
         return this.map.has(id) ? {id, ...this.map.get(id)} : null;
     }
+
     readAll() {
         if (arguments.length !== 0) {
             throw new Error('method readAll should not accept any parameters');
@@ -56,7 +56,7 @@ class DB {
 
         this.map.forEach((value, key, ownMap) => {
             all.push({...{id: key}, ...this.map.get(key)})
-        })
+        });
 
         // Или так
         // const keys = Array.from(this.map.keys());
@@ -66,6 +66,7 @@ class DB {
 
         return all;
     }
+
     update(id, obj) {
         if (arguments.length !== 2) {
             throw new Error('method update must accept two parameters');
@@ -74,13 +75,14 @@ class DB {
         } else if (!this.map.has(id)) {
             throw new Error('this id does not exist');
         } else if (typeof obj !== 'object') {
-            throw new Error('second argument is not an obgect');
+            throw new Error('second argument is not an object');
         }
 
         this.map.set(id, {...(this.map.get(id)), ...obj});
 
         return id;
     }
+
     delete(id) {
         if (typeof id != 'string') {
             throw new Error('id is not a string');
@@ -90,33 +92,50 @@ class DB {
 
         return this.map.delete(id);
     }
+
     find(obj) {
         if (typeof obj !== 'object') {
-            throw new Error('query is not an obgect');
-        }
-        else if (Object.keys(obj).length === 0) {
+            throw new Error('query is not an object');
+        } else if (Object.keys(obj).length === 0) {
             throw new Error('query is empty');
         }
-        else if (obj.name && typeof obj.name !== 'string') {
+
+        else if (obj.name && typeof obj.name !== 'string') { // на всякий случай
             throw new Error('name is not a type string');
-        } else if (obj.age && typeof obj.age !== 'object') {
-            throw new Error('argument is not an obgect');
+        }
+
+        else if (obj.age && typeof obj.age !== 'object') {
+            throw new Error('age is not an object');
         } else if (obj.age && (!obj.age.min && !obj.age.max)) {
             throw new Error('age must contain two parameters min and max or one of them');
-        } else if (obj.country && typeof obj.country !== 'string') {
-            throw new Error('country is not a type type string');
-        } else if (obj.salary && typeof obj.salary !== 'object') {
-            throw new Error('argument is not an obgect');
+        } else if (obj.age.min && typeof obj.age.min !== 'number') { // на всякий случай
+            throw new Error('age.min is not an number');
+        } else if (obj.age.max && typeof obj.age.max !== 'number') { // на всякий случай
+            throw new Error('age.max is not an number');
+        }
+
+        else if (obj.country && typeof obj.country !== 'string') {  // на всякий случай
+            throw new Error('country is not a type string');
+        }
+
+        else if (obj.salary && typeof obj.salary !== 'object') {
+            throw new Error('salary is not an object');
         } else if (obj.salary && (!obj.salary.min && !obj.salary.max)) {
             throw new Error('salary must contain two parameters min and max or one of them');
+        } else if (obj.salary.min && typeof obj.salary.min !== 'number') { // на всякий случай
+            throw new Error('salary.min is not an number');
+        } else if (obj.salary.max && typeof obj.salary.max !== 'number') { // на всякий случай
+            throw new Error('salary.max is not an number');
         }
 
         const all=[];
+
         this.map.forEach((value, key, ownMap) => {
+
             const arr = [];
+
             if (obj.name) {
                 arr.push(obj.name === value.name);
-                // console.log(arr);
             }
             if (obj.age) {
                 if (obj.age.min && obj.age.max) {
@@ -139,7 +158,7 @@ class DB {
                     arr.push(obj.salary.max >= value.salary);
                 }
             }
-            // console.log(arr);
+
             arr.every(elem => elem === true) && all.push({...{id: key}, ...this.map.get(key)});
         });
 
@@ -161,7 +180,7 @@ const person2 = {
     name: "Bob", // обязательное поле с типом string
     age: 50, // обязательное поле с типом number
     country: "ua", // обязательное поле с типом string
-    salary: 500 // обязательное поле с типом number
+    salary: 600 // обязательное поле с типом number
 };
 
 db.create(person2);

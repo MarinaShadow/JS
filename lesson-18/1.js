@@ -37,7 +37,7 @@ class DB {
     create(obj) {
 
         if (typeof obj !== 'object') {
-            throw new Error('argument is not an obgect');
+            throw new Error('argument is not an object');
         } else if (typeof obj.name !== 'string') {
             throw new Error('name is required field with type string');
         } else if (typeof obj.age !== 'number') {
@@ -55,6 +55,7 @@ class DB {
 
         return id;
     }
+
     read(id) {
 
         if (typeof id != 'string' || arguments.length === 0) {
@@ -63,6 +64,7 @@ class DB {
 
         return this.map.has(id) ? {id, ...this.map.get(id)} : null;
     }
+
     readAll() {
         if (arguments.length !== 0) {
             throw new Error('method readAll should not accept any parameters');
@@ -72,7 +74,7 @@ class DB {
 
         this.map.forEach((value, key, ownMap) => {
             all.push({...{id: key}, ...this.map.get(key)})
-        })
+        });
 
         // Или так
         // const keys = Array.from(this.map.keys());
@@ -82,6 +84,7 @@ class DB {
 
         return all;
     }
+
     update(id, obj) {
         if (arguments.length !== 2) {
             throw new Error('method update must accept two parameters');
@@ -90,13 +93,14 @@ class DB {
         } else if (!this.map.has(id)) {
             throw new Error('this id does not exist');
         } else if (typeof obj !== 'object') {
-            throw new Error('second argument is not an obgect');
+            throw new Error('second argument is not an object');
         }
 
         this.map.set(id, {...(this.map.get(id)), ...obj});
 
         return id;
     }
+
     delete(id) {
         if (typeof id != 'string') {
             throw new Error('id is not a string');
