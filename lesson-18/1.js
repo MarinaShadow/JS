@@ -57,7 +57,6 @@ class DB {
     }
 
     read(id) {
-
         if (typeof id != 'string' || arguments.length === 0) {
             throw new Error('method read must accept a string');
         }
