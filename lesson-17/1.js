@@ -41,6 +41,15 @@ function postpone(start, end, delay) {
             }, (start - i + 1) * delay, i);
         }
     }
+
+    // Или так
+    // for (let i = start;
+    //      start<end ? i <= end : i >= end;
+    //      start<end ? i++ : i--) {
+    //     setTimeout( function timer(i){
+    //         console.log(i);
+    //     }, (start<end ? (i - start + 1) : (start - i + 1)) * delay, i);
+    // }
 }
 
 
