@@ -34,7 +34,7 @@ class Customers {
     [Symbol.iterator]() {
         let i = 0;
 
-        const result = this.arr.filter(i => i.verified === true);
+        const result = this.arr.filter(i => i.verified);
 
         return {
             next: () => {
