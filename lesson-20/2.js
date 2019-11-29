@@ -29,7 +29,7 @@ class Customers {
 
     *[Symbol.iterator]() {
 
-        const result = this.arr.filter(i => i.verified === true);
+        const result = this.arr.filter(i => i.verified);
 
         for (const i of result) {
             yield i;
